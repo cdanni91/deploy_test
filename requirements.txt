@@ -1,0 +1,6 @@
+beautifulsoup4
+selenium
+Flask
+webdriver-manager
+packaging
+gunicorn
