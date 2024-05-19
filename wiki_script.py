@@ -53,7 +53,7 @@ def main_script():
             strong_texts.append(strong_tag.get_text())
 
     print(strong_texts)
-    return strong_texts
+    return "Hola"
     
 
 '''2. Configs for the API and Flask'''
