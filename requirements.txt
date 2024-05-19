@@ -1,5 +1,5 @@
 beautifulsoup4
-selenium==4.11.2
+selenium
 Flask
 webdriver-manager
 packaging
