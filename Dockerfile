@@ -11,15 +11,20 @@ RUN apt-get update && apt-get install -y \
     libappindicator3-1 \
     libgbm1 \
     fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libgtk-3-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Descargar e instalar Chrome
+# Descargar e instalar Google Chrome
 RUN wget -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get update \
     && apt-get install -y /tmp/chrome.deb \
     && rm /tmp/chrome.deb
 
 # Descargar e instalar ChromeDriver
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/125.0.6422.60/chromedriver_linux64.zip \
+RUN CHROMEDRIVER_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
+    && wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip -d /usr/local/bin/ \
     && rm /tmp/chromedriver.zip
 
