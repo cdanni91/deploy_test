@@ -1,14 +1,15 @@
-FROM python:3.9-slim
+FROM python:3.10
 
-WORKDIR /
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY . /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install  --trusted-host pypi.install.org -r requirements.txt
 
-COPY . .
-
-ENV PORT=5000
-EXPOSE $PORT
+RUN apt-get update && apt-get install -y wget unzip && \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    apt install -y ./google-chrome-stable_current_amd64.deb && \
+    rm google-chrome-stable_current_amd64.deb \
+    apt-get clean
 
 CMD ["python", "wiki_script.py"]
