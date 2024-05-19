@@ -1,7 +1,7 @@
-# Imports de BeautifulSoup
+# BeautifulSoup imports
 from bs4 import BeautifulSoup
 
-# Imports de Selenium
+# Selenium imports
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -9,8 +9,6 @@ from selenium.webdriver.chrome.service import Service
 
 # Flask imports
 from flask import Flask, request
-
-
 
 
 '''0. We create the flask app'''
@@ -51,12 +49,12 @@ def main_script():
         strong_tag = element.find('strong')
         if strong_tag:
             strong_texts.append(strong_tag.get_text())
-            
+
     print(strong_texts)
     return strong_texts
     
 
-
+'''2. Configs for the API and Flask'''
 
 @app.route('/', methods = ['GET'])
 
